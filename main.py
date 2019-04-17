@@ -6,8 +6,22 @@ from werkzeug import utils
 from werkzeug.utils import secure_filename
 import os
 import sqlite3
+from flask_sqlalchemy import SQLAlchemy
 from content import get_list_uploads, connect_db, insert_value
+
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
+db = SQLAlchemy(app)
+db.create_all()
+
+class IncommingFile(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    filename = db.Column(db.String(256), unique=False, nullable=False)
+    url = db.Column(db.String(1024), unique=True, nullable=False)
+    ip_address = db.Column(db.String(64), unique=False, nullable=True)
+
+    def __repr__(self):
+        return '<File %r>' % self.filename
 
 @app.route("/")
 def home():
