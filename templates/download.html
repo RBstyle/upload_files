@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{namefail}}</h1>
+<form action="/upllist" method="POST">
+    <input type="hidden" name="filename" value="{{namefail}}">
+    <button type="submit" class="btn btn-primary my-1">Скачать без регистрации и СМС!</button>
+
+</form>
+{% endblock %}

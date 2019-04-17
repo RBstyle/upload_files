@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Список файлов</h1>
+    
+    {% for item in uploads_count %}
+    <form action="/download/{{item}}" method="POST">
+        <div class="form-group">
+            <div class="form-inline">
+                <div>
+                    <label for="fileName">Имя файла: </label>
+                </div>
+                <div style="margin: 5px;">
+                    <input type="text" readonly class="form-control-plaintext" id="fileName" name="filename" value="{{item}}">
+                </div>
+            </div>
+            <div class="form-inline">
+                <div>
+                    <label for="link">Ссылка на файл:</label>
+                </div>
+                <div style="margin: 5px;">
+                    <input type="text" readonly id="link" class="form-control " name="filename" value="{{url_for('download', filename=item, _external=True)}}" size="100%">
+                </div>
+            </div>
+        <button type="submit" class="btn btn-primary my-1">Просмотр</button>
+        <hr style="width: 100%; color: black; height: 1px; background-color:black;">
+        </div>
+    
+
+    </form>
+    {% endfor %}
+    
+{% endblock %}
