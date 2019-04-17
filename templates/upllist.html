@@ -19,6 +19,7 @@
                     <label for="link">Ссылка на файл:</label>
                 </div>
                 <div style="margin: 5px;">
+                    <!-- Здесь формируется ссылка на скачивание -->
                     <input type="text" readonly id="link" class="form-control " name="filename" value="{{url_for('download', filename=item, _external=True)}}" size="100%">
                 </div>
             </div>

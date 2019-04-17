@@ -7,6 +7,9 @@ def get_list_uploads():
         uploads_count.append(filename)
     return uploads_count
 
+'''
+следующие функции не актуальны.
+'''
 def connect_db(query=None):
     if query == 'commit':
         con.commit()
